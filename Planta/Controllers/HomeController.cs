@@ -5,18 +5,27 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Planta.Models;
+using Planta.Repository;
 
 namespace Planta.Controllers
 {
     public class HomeController : Controller
     {
+        IFarmRepository _farm;
+        public HomeController(IFarmRepository farm)
+        {
+            _farm = farm;
+        }
         public IActionResult Index()
         {
+           
             return View();
         }
 
         public IActionResult About()
         {
+            FarmModel fm = new FarmModel() { Code =Guid.NewGuid(), CropDetails = null, Name = "test name" };
+            _farm.Create(fm);
             ViewData["Message"] = "Your application description page.";
 
             return View();

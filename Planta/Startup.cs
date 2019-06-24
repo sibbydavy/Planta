@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Planta.Repository;
 
 namespace Planta
 {
@@ -31,6 +32,10 @@ namespace Planta
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.Configure<DatabaseConfiguration>(Configuration.GetSection("MongoConfiguration"));
+            services.AddSingleton<IMongoDbContext, MongoDbContext>();
+            
+            services.AddTransient<IFarmRepository, FarmRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -52,11 +57,13 @@ namespace Planta
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+           
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=AdministratorDashboard}/{action=DashboardView}/{id?}");
             });
         }
     }
