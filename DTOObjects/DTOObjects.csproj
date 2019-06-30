@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Planta.DTOObjects</AssemblyName>
+    <RootNamespace>Planta.DTOObjects</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DBActions\DBActions.csproj" />
+  </ItemGroup>
+
+</Project>
