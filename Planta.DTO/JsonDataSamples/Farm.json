@@ -1,0 +1,14 @@
+{
+"id":"1",
+"farmName":"Iduki",
+"crops" : [
+{
+  "id" : 1,
+  "name" : "Elanchi",
+},
+{
+  "id" : 2,
+  "name" : "Banana",
+}
+]
+}

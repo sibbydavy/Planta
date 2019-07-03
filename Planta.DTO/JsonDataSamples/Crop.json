@@ -1,0 +1,16 @@
+{
+"id" : 1, 
+"cropName":"Elanchi",
+"totalseaon" : 9,
+"farmid" : 1,
+"yieldPeriods":  
+[
+ {
+   "id":1,
+ }
+ {
+   "id":2,
+ }
+]   
+       
+}

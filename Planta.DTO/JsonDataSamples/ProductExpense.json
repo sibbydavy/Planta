@@ -1,0 +1,67 @@
+{  
+   "farmid":1,
+   "cropid":1,
+   "yields":[  
+      {  
+         "yieldId":1,
+         "totalexp":100,
+         "productexpenses":[  
+            {  
+               "id":1,
+               "total":100,
+               "uom":"kg",
+               "code":"#Tls",
+               "description":"Tools",
+               "price":100.0,
+               "qty":10,
+               "tax":0,
+			   "dateofentry": "12/03/2019"
+            },
+            {  
+               "id":2,
+               "total":100,
+               "uom":"kg",
+               "code":"#Tls",
+               "description":"Tools",
+               "price":100.0,
+               "qty":10,
+               "tax":0,
+			   "dateofentry": "12/03/2019"
+            }
+         ]
+      },
+      {  
+         "yieldId":2,
+         "periodStart":"01/Feb/2019",
+         "periodEnd":"30/May/2019",
+         "isCurrent":1,
+         "description":"Peridon 2",
+         "totalAmount":800,
+         "periodName":"Feb2019-May2019",
+         "productexpenses":[  
+            {  
+               "id":2,
+               "total":100,
+               "uom":"kg",
+               "code":"#Tls",
+               "description":"Tools",
+               "price":100.0,
+               "qty":10,
+               "tax":0,
+			   "dateofentry": "12/03/2019"
+            },
+            {  
+               "id":3,
+               "total":100,
+               "uom":"kg",
+               "code":"#Tls",
+               "description":"Tools",
+               "price":100.0,
+               "qty":10,
+               "tax":0,
+			   "dateofentry": "12/03/2019"
+            }
+         ]
+      }
+   ]
+}

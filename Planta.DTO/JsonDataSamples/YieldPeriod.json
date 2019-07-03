@@ -1,0 +1,25 @@
+{
+ "farmid" : 1,
+ "cropid" : 1,
+[
+	{ 
+		"id":1,   
+		"periodStart":"01/Aug/2018",
+		"periodEnd":"30/Oct/2018",
+		"isCurrent":0,
+		"description":"Peridon 1",
+		"totalAmount":100,
+		"periodName":"Aug2018-Oct2018"
+	},
+	{ 
+		"id":2,   
+		"periodStart":"01/Feb/2019",
+		"periodEnd":"30/May/2019",
+		"isCurrent":1,
+		"description":"Peridon 2",
+		"totalAmount":100,
+		"periodName":"Feb2019-May2019"
+	}
+]
+
+}
