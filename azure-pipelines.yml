@@ -1,5 +1,3 @@
-[![Build Status](https://joecha.visualstudio.com/Planta/_apis/build/status/sibbydavy.Planta?branchName=master)](https://joecha.visualstudio.com/Planta/_build/latest?definitionId=1&branchName=master)
-
 # ASP.NET Core
 # Build and test ASP.NET Core projects targeting .NET Core.
 # Add steps that run tests, create a NuGet package, deploy, and more:
