@@ -1,0 +1,200 @@
+swagger: '2.0'
+info:
+  title: HL7 Submission Service
+  description: Submits HL7 message converted in json format to the ACR server.
+  version: v1
+paths:
+  /api/AcrWebApiClient/acrwebapis:
+    get:
+      tags:
+        - AcrWebApiClient
+      summary: Get the list of web-apps.
+      responses:
+        '200':
+          description: Success
+  /api/AcrWebApiClient:
+    post:
+      tags:
+        - AcrWebApiClient
+      summary: Add a web-app.
+      consumes:
+        - application/json-patch+json
+        - application/json
+        - text/json
+        - application/*+json
+      parameters:
+        - in: body
+          name: body
+          description: web app details
+          schema:
+            $ref: '#/definitions/AcrWebApiDetail'
+      responses:
+        '200':
+          description: Success
+  /api/AcrWebApiClient/Update:
+    post:
+      tags:
+        - AcrWebApiClient
+      summary: Update a web-app by id.
+      consumes:
+        - application/json-patch+json
+        - application/json
+        - text/json
+        - application/*+json
+      parameters:
+        - in: body
+          name: body
+          description: web app details
+          schema:
+            $ref: '#/definitions/AcrWebApiDetail'
+      responses:
+        '200':
+          description: Success
+  '/api/AcrWebApiClient/{id}':
+    delete:
+      tags:
+        - AcrWebApiClient
+      summary: Delete web-app detail
+      parameters:
+        - in: path
+          name: id
+          description: app id
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Success
+  /api/Default/IsAlive:
+    get:
+      tags:
+        - Default
+      summary: Check service health
+      responses:
+        '200':
+          description: Success
+  '/api/Hl7MessageClient/apiid/{id}':
+    post:
+      tags:
+        - Hl7MessageClient
+      summary: Send message to server.
+      consumes:
+        - application/json-patch+json
+        - application/json
+        - text/json
+        - application/*+json
+      parameters:
+        - in: path
+          name: id
+          description: Web-app id
+          required: true
+          type: integer
+          format: int32
+        - in: body
+          name: body
+          description: Message
+          schema:
+            $ref: '#/definitions/HL7MessageData'
+      responses:
+        '200':
+          description: Success
+  /api/Logs:
+    get:
+      tags:
+        - Logs
+      summary: Get logs
+      description: Gets the logs.
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/SubmissionLog'
+  '/api/Logs/in/{seconds}':
+    get:
+      tags:
+        - Logs
+      summary: Get logs within seconds
+      description: Get list of all logs with in a timespan of give senconds.
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: seconds
+          description: 'Specify number of seconds, to retrieve all recent logs logged in the timespan.'
+          required: true
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/SubmissionLog'
+definitions:
+  AcrWebApiDetail:
+    type: object
+    properties:
+      id:
+        format: int32
+        type: integer
+      appName:
+        type: string
+      accessToken:
+        type: string
+      callbackUrl:
+        type: string
+  HL7MessageData:
+    type: object
+    properties:
+      id:
+        format: int32
+        type: integer
+      contentId:
+        format: int32
+        type: integer
+      dataPrimaryId:
+        format: int32
+        type: integer
+      dataId:
+        format: uuid
+        type: string
+      content:
+        format: byte
+        type: string
+      name:
+        type: string
+      contentType:
+        type: string
+      contentLength:
+        format: int32
+        type: integer
+      status:
+        description: "\r\n\r\n"
+        enum:
+          - Unknown
+          - Received
+          - ValidationFailed
+          - ValidationSuccess
+          - AnonymizationFailed
+          - Anonymized
+          - SentSuccess
+          - SentFailed
+          - Submission
+          - JsonConverted
+        type: string
+  SubmissionLog:
+    type: object
+    properties:
+      id:
+        format: int32
+        type: integer
+      message:
+        type: string
+      time:
+        format: int64
+        type: integer
